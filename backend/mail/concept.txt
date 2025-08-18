@@ -1,0 +1,21 @@
+Mail Service
+Your mail service is responsible for sending emails, such as OTPs or welcome messages.
+Nodemailer: This is a library for Node.js that simplifies sending emails. It connects to an SMTP server (like Gmail, SendGrid, or a custom one) and sends the email content you provide.
+RabbitMQ (with amqplib): This is the crucial link between your user and mail services.
+
+How They Work Together
+Here's a common scenario—a user signs up, and a confirmation email needs to be sent:
+
+User Registration (User Service):
+The user service receives a request to register a new user.
+It saves the user's details to MongoDB.
+Instead of waiting for an email to be sent directly (which can be slow and might fail), it creates a message with the user's email address and the email content.
+It then publishes this message to a RabbitMQ queue (e.g., email_queue) using amqplib. This is an asynchronous operation that completes almost instantly.
+The user service then sends a success response back to the user without having to wait for the email to be fully processed.
+
+Email Processing (Mail Service):
+The mail service is constantly listening for messages on the email_queue using amqplib.
+When a new message arrives, the mail service consumes it.
+It then uses Nodemailer to send the email to the recipient using the information from the message.
+This entire process happens in the background, decoupled from the initial user registration request.
+By using RabbitMQ, you ensure that if the mail service is temporarily down, the messages will wait in the queue and be processed later. This makes your application more resilient and scalable. The asynchronous communication prevents your user service from becoming slow or unresponsive while waiting for a network-dependent task like sending an email to complete.
