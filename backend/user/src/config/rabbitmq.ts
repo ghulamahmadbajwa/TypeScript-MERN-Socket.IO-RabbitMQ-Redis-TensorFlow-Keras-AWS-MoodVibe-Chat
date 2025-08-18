@@ -29,7 +29,7 @@ export const publishToQueue = async (queueName: string, message: any) => {
         await channel.assertQueue(queueName, { durable: true });
         channel.sendToQueue(queueName, Buffer.from(JSON.stringify(message)), { persistent: true });
         console.log(`Message sent to queue ${queueName}:`, message);
-    } catch (error) { 
+    } catch (error) {
         console.error('Failed to send message to RabbitMQ queue:', error);
         throw error; // Re-throw the error for further handling
     }

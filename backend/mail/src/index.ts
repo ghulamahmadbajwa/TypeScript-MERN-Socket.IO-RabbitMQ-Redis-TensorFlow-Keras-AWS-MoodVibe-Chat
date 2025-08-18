@@ -2,9 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { startSendOtpConsumer } from './consumer.js';
 
-dotenv.config();
+dotenv.config(); 
 
-startSendOtpConsumer(); // Start the OTP consumer
+startSendOtpConsumer(); // Start the OTP consumer 
 
 
 const app = express();

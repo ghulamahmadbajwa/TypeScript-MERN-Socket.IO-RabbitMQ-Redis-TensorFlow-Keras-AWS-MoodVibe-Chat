@@ -1,4 +1,4 @@
-import mongoose , {Document,Schema} from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 //import mongoose from "mongoose";, you are importing the entire mongoose library. This library is an object that contains many different properties and classes, including Document and Schema.
 export interface IUser extends Document {
     username: string;
@@ -6,7 +6,7 @@ export interface IUser extends Document {
 }
 // ==>Interface (IUser): A TypeScript tool for type safety, ensuring your code interacts with user documents correctly during development.
 const UserSchema: Schema<IUser> = new Schema({
-// ==>Schema (UserSchema): A Mongoose tool for defining the structure and rules of MongoDB documents, ensuring data integrity at runtime.
+    // ==>Schema (UserSchema): A Mongoose tool for defining the structure and rules of MongoDB documents, ensuring data integrity at runtime.
     username: {
         type: String,
         required: true,

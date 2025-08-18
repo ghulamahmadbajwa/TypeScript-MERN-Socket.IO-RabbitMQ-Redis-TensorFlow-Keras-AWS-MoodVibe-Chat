@@ -24,6 +24,6 @@ const tryCatch = (handler) => {
     };
 };
 export default tryCatch;
-// Export `tryCatch` so it can be imported and used 
+// Export `tryCatch` so it can be imported and used
 // to wrap route handlers in other files.
 //# sourceMappingURL=TryCatch.js.map

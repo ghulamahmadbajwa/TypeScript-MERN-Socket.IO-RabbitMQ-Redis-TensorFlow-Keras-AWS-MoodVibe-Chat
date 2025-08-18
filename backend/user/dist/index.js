@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import { createClient } from 'redis';
 import userRoutes from './routes/user.js';
 import { connectRabbitMQ } from './config/rabbitmq.js';
+import cors from 'cors';
 dotenv.config(); //dotenv.config(): When you call this function, it reads the .env file and adds all the variables defined within it to the Node.js process.env object.
 connectRabbitMQ(); // Connect to RabbitMQ
 // Validate REDIS_URL
@@ -23,6 +24,7 @@ mongoose.set('debug', true); //his line should be placed at the very beginning o
 connectDB();
 const app = express();
 app.use(express.json()); // Middleware to parse JSON bodies
+app.use(cors()); // Enable CORS for all routes
 app.use("/api/v1", userRoutes); // Use user routes
 const port = process.env.PORT;
 app.listen(port, () => {
