@@ -56,7 +56,7 @@ export const isAuth = async (req: AuthenticatedRequest, res: any, next: any): Pr
         // This is the most crucial part. 'jwt.verify' checks the token's signature.
         // If the token is valid, it returns the decoded payload. If not, it throws an error.
         const decodeValue = jwt.verify(token, secret) as JwtPayload;
-
+        
         // Step 7: Check if the decoded payload contains the expected user data.
         // This ensures that the token is not only valid but also contains the information we need.
         if (!decodeValue || !decodeValue.user) {
