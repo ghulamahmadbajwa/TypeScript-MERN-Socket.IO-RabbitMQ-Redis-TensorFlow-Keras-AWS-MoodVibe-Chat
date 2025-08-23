@@ -1,0 +1,7 @@
+# Ignore .env files in backend services
+backend/user/.env
+backend/chat/.env
+backend/mail/.env
+backend/user/.env.*
+backend/chat/.env.*
+backend/mail/.env.*
