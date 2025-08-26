@@ -17,7 +17,7 @@ if (!process.env.REDIS_URL) {
 }// This if statement checks to see if process.env.REDIS_URL is a "falsy" value. In this context, a falsy value would be undefined, which is what process.env.REDIS_URL would be if it's not set in your .env file. If the REDIS_URL is missing, the code immediately stops (throws an error), preventing the next line from ever running.// If the if statement's condition is false (meaning process.env.REDIS_URL does have a value), the code proceeds to the next block. At this point, because of the check you just performed, TypeScript knows for sure that process.env.REDIS_URL is a string and not undefined.  This is how you satisfy the type checker.
 // Create Redis client
 export const redisClient = createClient({
-  url: process.env.REDIS_URL
+  url: process.env.REDIS_URL 
 });
 redisClient
   .connect()
