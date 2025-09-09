@@ -1,1 +1,1 @@
-{"version":3,"file":"cloudinary.d.ts","sourceRoot":"","sources":["../../src/confiq/cloudinary.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,EAAE,IAAI,UAAU,EAAE,MAAM,YAAY,CAAC;AAkB9C,eAAe,UAAU,CAAC"}
+{"version":3,"file":"cloudinary.d.ts","sourceRoot":"","sources":["../../src/confiq/cloudinary.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,EAAE,IAAI,UAAU,EAAE,MAAM,YAAY,CAAC;AAuC9C,eAAe,UAAU,CAAC"}

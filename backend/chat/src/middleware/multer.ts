@@ -6,23 +6,23 @@ import cloudinary from '../confiq/cloudinary.js';
 
 
 const storage = new CloudinaryStorage({
-   
+
     cloudinary: cloudinary,
-    params:{
+    params: {
         folder: "chat_images", // Optional: specify a folder in your Cloudinary account
         allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'mov'], // Specify allowed file formats
-        transformation: [{ width: 800, height: 800, crop: 'limit' }, { quality: "auto" }], 
-    } as any ,
+        transformation: [{ width: 800, height: 800, crop: 'limit' }, { quality: "auto" }],
+    } as any,
 });
 
-export const upload = multer({ 
+export const upload = multer({
     storage: storage,
     limits: { fileSize: 5 * 1024 * 1024 }, // Limit file size to 5mb
     fileFilter: (req, file, cb) => {
-        if(file.mimetype.startsWith('image/')){
+        if (file.mimetype.startsWith('image/')) {
             cb(null, true);
-        }else{
+        } else {
             cb(new Error('Only image files are allowed!'));
         }
     }
-    });
+});

@@ -1,34 +1,38 @@
+// Import TypeScript types from Express
+// `type` keyword ensures these are only used for compile-time type checking
+// and do not appear in the compiled JavaScript code.
 import type { Request, Response, NextFunction, RequestHandler } from "express";
-// Importing TypeScript types from express.
-// The `type` keyword is used because these exist only at compile-time 
-// and are removed from the final JavaScript code.
 
+/**
+ * tryCatch: A higher-order function to handle async errors in Express routes
+ * --------------------------------------------------------------------------
+ * @param handler - An async Express route handler or middleware function.
+ * @returns A new Express-compatible async function that wraps `handler` in a try/catch.
+ *
+ * Purpose:
+ * - Eliminates repetitive try/catch blocks in each route.
+ * - Automatically catches any async errors and sends a 500 response.
+ */
 const tryCatch = (handler: RequestHandler): RequestHandler => {
-  // Declare a function `tryCatch` that takes one argument:
-  // - `handler`: must be of type RequestHandler (an Express middleware/route function).
-  // The function itself also returns a RequestHandler.
-
+  // Return a new async middleware function that Express can use
   return async (req: Request, res: Response, next: NextFunction) => {
-    // Return a new async function with Express's standard parameters:
-    // req (Request), res (Response), and next (NextFunction).
-    // Using `async` allows the use of `await` inside.
-
     try {
+      // Attempt to execute the original handler
+      // `await` ensures we handle any async operations correctly
       await handler(req, res, next);
-      // Try to run the original handler.
-      // `await` ensures we wait for async tasks (like DB calls) to finish.
     } catch (error) {
-      // If an error occurs anywhere above, execution jumps here.
-
+      // If any error occurs in `handler`, it is caught here
       console.error("Error in tryCatch middleware:", error);
-      // Log the error on the server for debugging.
 
+      // Respond to the client with a 500 Internal Server Error
+      // This prevents unhandled promise rejections and keeps the server running
       res.status(500).json({ error: "Internal Server Error" });
-      // Send a 500 response to the client indicating a server error.
+
+      // Optional: could call `next(error)` instead if you have an error-handling middleware
+      // next(error);
     }
   };
 };
 
+// Export tryCatch so it can wrap any route handler to auto-catch errors
 export default tryCatch;
-// Export `tryCatch` so it can be imported and used
-// to wrap route handlers in other files.

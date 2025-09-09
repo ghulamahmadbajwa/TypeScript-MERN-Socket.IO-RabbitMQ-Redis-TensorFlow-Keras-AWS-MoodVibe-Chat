@@ -1,4 +1,9 @@
 import mongoose, { Document, Types } from "mongoose";
+/**
+ * IMessage Interface
+ * -----------------
+ * Defines the structure of a message document in MongoDB.
+ */
 export interface IMessage extends Document {
     chatId: Types.ObjectId;
     sender: string;
@@ -13,6 +18,12 @@ export interface IMessage extends Document {
     createdAt: Date;
     updatedAt: Date;
 }
+/**
+ * Messages Model
+ * --------------
+ * Mongoose model representing the "Messages" collection.
+ * - Allows creating, reading, updating, and querying message documents.
+ */
 export declare const Messages: mongoose.Model<IMessage, {}, {}, {}, mongoose.Document<unknown, {}, IMessage, {}, {}> & IMessage & Required<{
     _id: unknown;
 }> & {
