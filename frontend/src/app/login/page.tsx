@@ -46,20 +46,20 @@ const LoginPage = () => {
 
     // --------------------- JSX ---------------------
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-[#F5E6D3] flex items-center justify-center p-4" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/paper.png")' }}>
             <div className="max-w-md w-full">
-                <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg">
+                <div className="bg-[#F5E6D3]/80 border border-[#A67B5B] rounded-2xl p-8 shadow-lg backdrop-blur-sm">
                     
                     {/* HEADER */}
-                    <div className="text-center mb-8">
-                        <div className="mx-auto w-20 h-20 bg-gradient-to-tr from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center mb-6 shadow-md">
-                            <Mail size={40} className="text-white" />
+                    <div className="text-center mb-8 bg">
+                        <div className="mx-auto w-20 h-20 bg-[#6B4E2E] rounded-xl flex items-center justify-center mb-6 shadow-md">
+                            <Mail size={40} className="text-[#F5E6D3]" />
                         </div>
-                        <h1 className="text-3xl font-bold text-gray-800 mb-3">
-                            Sign in to MoodVibe
+                        <h1 className="text-3xl font-merriweather font-bold text-[#2D2D2D] mb-3">
+                            Welcome to Ping
                         </h1>
-                        <p className="text-gray-600 text-lg">
-                            Enter your email to begin.
+                        <p className="text-[#2D2D2D] text-lg font-merriweather">
+                            Connect instantly, chat effortlessly.
                         </p>
                     </div>
 
@@ -68,35 +68,35 @@ const LoginPage = () => {
                         <div>
                             <label
                                 htmlFor="email"
-                                className="block text-sm font-medium text-gray-700 mb-2 ml-1"
+                                className="block text-sm font-merriweather text-[#2D2D2D] mb-2 ml-1"
                             >
-                                Enter your email to get started.
+                                Enter your email to start chatting ✨
                             </label>
                             <input
                                 type="email"
                                 id="email"
-                                placeholder="Enter email"
+                                placeholder="e.g. you@example.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition placeholder-gray-400 text-gray-900"
+                                className="w-full px-4 py-3 rounded-lg border border-[#A67B5B] bg-[#C9B79C] focus:ring-2 focus:ring-[#6B4E2E] focus:border-[#6B4E2E] outline-none transition placeholder-[#2D2D2D] text-[#2D2D2D] font-merriweather"
                             />
                         </div>
 
                         {/* SUBMIT BUTTON */}
                         <button
                             type="submit"
-                            className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-indigo-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full bg-[#6B4E2E] text-[#F5E6D3] py-3 px-4 rounded-lg font-merriweather flex items-center justify-center gap-2 hover:bg-[#A67B5B] transition disabled:opacity-50 disabled:cursor-not-allowed"
                             disabled={loading} // Disable button while loading
                         >
                             {loading ? (
                                 <div className='flex items-center justify-center gap-2'>
-                                    <Loader2 className="h-5 w-5 animate-spin" />
-                                    Sending OTP to your email...
+                                    <Loader2 className="h-5 w-5 animate-spin text-[#F5E6D3]" />
+                                    Sending your access link...
                                 </div>
                             ) : (
                                 <div className='flex items-center justify-center gap-2'>
-                                    <span>Send verification code</span>
+                                    <span>Join the conversation</span>
                                     <ArrowRight className="h-5 w-5" />
                                 </div>
                             )}

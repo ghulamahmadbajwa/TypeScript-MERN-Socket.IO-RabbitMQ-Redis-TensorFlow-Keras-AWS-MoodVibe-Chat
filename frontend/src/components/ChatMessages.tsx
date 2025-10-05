@@ -69,19 +69,19 @@ const ChatMessages = ({ selectedUser, messages, loggedInUser }: ChatMessagesProp
   // Render
   // ----------------------------
   return (
-    <div className="flex-1 overflow-hidden flex flex-col">
+    <div className="flex-1 overflow-hidden flex flex-col bg-[#F5E6D3]" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/paper.png")' }}>
       <div 
         ref={messagesContainerRef}
-        className="flex-1 overflow-y-auto p-3 space-y-2 custom-scroll" 
+        className="flex-1 overflow-y-auto p-4 space-y-3 custom-scroll" 
         style={{ maxHeight: 'calc(100vh - 215px)' }}
       >
         
         {/* Case 1: No chat selected */}
         {!selectedUser ? (
-          <p className="text-gray-400 text-center mt-20 flex flex-col items-center gap-2">
-            Please select a user to start a conversation
-            <Inbox className="w-6 h-6 text-gray-500" />
-          </p>
+          <div className="text-[#2D2D2D] text-center mt-20 flex flex-col items-center gap-3">
+            <p className="text-lg font-merriweather italic">Start a chat to connect now 🚀</p>
+            <Inbox className="w-8 h-8 text-[#6B4E2E]" />
+          </div>
         ) : (
           <>
             {/* Case 2: Chat selected → show messages */}
@@ -91,35 +91,35 @@ const ChatMessages = ({ selectedUser, messages, loggedInUser }: ChatMessagesProp
               return (
                 <div
                   key={msg._id || `${index}-${msg.createdAt}`}
-                  className={`flex flex-col gap-1 mt-2 ${
+                  className={`flex flex-col gap-1 mt-3 ${
                     isSentByMe ? "items-end" : "items-start"
                   }`}
                 >
                   {/* Message bubble */}
                   <div
-                    className={`rounded-lg px-4 py-2 max-w-xs break-words ${
+                    className={`rounded-xl px-4 py-3 max-w-xs break-words shadow-md ${
                       isSentByMe
-                        ? "bg-blue-600 text-white rounded-br-none"
-                        : "bg-gray-700 text-white rounded-bl-none"
-                    }`}
+                        ? "bg-[#C9B79C] text-[#2D2D2D] rounded-br-sm"
+                        : "bg-[#F5E6D3] text-[#2D2D2D] rounded-bl-sm"
+                    } transition-all duration-200 hover:shadow-lg`}
                   >
                     {/* Image message */}
                     {msg.messageType === "image" && msg.image?.url && (
                       <img
                         src={msg.image.url}
                         alt="Shared image"
-                        className="max-w-full h-auto rounded-lg"
+                        className="max-w-full h-auto rounded-lg border-2 border-[#A67B5B]"
                       />
                     )}
 
                     {/* Text message or caption */}
-                    {msg.text && <p>{msg.text}</p>}
+                    {msg.text && <p className="font-merriweather text-sm">{msg.text}</p>}
                   </div>
 
                   {/* Timestamp + Seen status */}
                   <div
-                    className={`flex items-center gap-1 text-xs text-gray-400 ${
-                      isSentByMe ? "pr-2 flex-row-reverse" : "pl-2"
+                    className={`flex items-center gap-2 text-xs text-[#6B4E2E] font-merriweather ${
+                      isSentByMe ? "pr-3 flex-row-reverse" : "pl-3"
                     }`}
                   >
                     <span>{moment(msg.createdAt).format("hh:mm A · MMM D")}</span>
@@ -128,14 +128,14 @@ const ChatMessages = ({ selectedUser, messages, loggedInUser }: ChatMessagesProp
                     {isSentByMe && (
                       <div className="flex items-center ml-1">
                         {msg.seen ? (
-                          <div className="flex items-center gap-1 text-blue-400">
-                            <CheckCheck className="w-3 h-3" />
+                          <div className="flex items-center gap-1 text-[#6B4E2E]">
+                            <CheckCheck className="w-4 h-4" />
                             {msg.seenAt && (
                               <span>{moment(msg.seenAt).format("hh:mm A")}</span>
                             )}
                           </div>
                         ) : (
-                          <Check className="w-3 h-3 text-gray-500" />
+                          <Check className="w-4 h-4 text-[#2D2D2D]" />
                         )}
                       </div>
                     )}

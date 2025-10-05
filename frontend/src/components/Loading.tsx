@@ -7,11 +7,12 @@ const Loading = () => {
     return (
         // Full-screen overlay container
         <div 
-          className="fixed inset-0 flex items-center justify-center bg-indigo-500 bg-opacity-80 z-50"
+          className="fixed inset-0 flex items-center justify-center bg-[#F5E6D3] bg-opacity-70 z-50"
+          style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/paper.png")' }}
         >
             {/* Spinner icon */}
             <Loader2 
-                className="h-10 w-10 text-white animate-spin" 
+                className="h-12 w-12 text-[#6B4E2E] animate-spin shadow-sm" 
                 aria-label="Loading..." // Accessibility: screen readers can identify this as a loading spinner
             />
 
@@ -36,7 +37,7 @@ export default Loading;
 Conceptual Summary:
 1. "fixed inset-0": positions the div to cover the entire screen.
 2. "flex items-center justify-center": centers the spinner both vertically and horizontally.
-3. "bg-indigo-500 bg-opacity-80": semi-transparent background overlay to obscure content while loading.
+3. "bg-[#F5E6D3] bg-opacity-70": semi-transparent parchment beige overlay to evoke a journal-like feel while loading.
 4. "z-50": ensures this overlay appears above other elements.
 5. Loader2: a React icon used as a spinner. Tailwind's "animate-spin" rotates it continuously.
 6. Optional style block: defines custom spin animation (not necessary unless you want custom behavior).

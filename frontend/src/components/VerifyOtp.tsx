@@ -52,7 +52,7 @@ const VerifyOtp = () => {
     try {
       // Call backend API to verify OTP
       const { data } = await axios.post(`${user_service}/api/v1/verify`, { email, otp: enteredOtp });
-      
+
       toast.success(data.message);
 
       // Store JWT token in cookies
@@ -135,36 +135,36 @@ const VerifyOtp = () => {
 
   // ------------------------ JSX Render ------------------------
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#F5E6D3] flex items-center justify-center p-4" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/paper.png")' }}>
       <div className="max-w-md w-full">
-        <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-lg">
-          
+        <div className="bg-[#F5E6D3]/80 border border-[#A67B5B] rounded-2xl p-8 shadow-lg shadow-sm">
+
           {/* Header Section */}
           <div className="text-center mb-8 relative">
             {/* Back button */}
-            <button 
-              className='absolute top-0 left-0 p-2 text-blue-400 hover:text-indigo-600' 
+            <button
+              className='absolute top-0 left-0 p-2 text-[#6B4E2E] hover:text-[#A67B5B]'
               onClick={() => router.push("/login")}
             >
               <ChevronLeft className='w-6 h-6' />
             </button>
 
             {/* Lock Icon */}
-            <div className="mx-auto w-20 h-20 bg-gradient-to-tr from-indigo-500 to-blue-500 rounded-xl flex items-center justify-center mb-6 shadow-md">
-              <Lock size={40} className="text-white" />
+            <div className="mx-auto w-20 h-20 bg-[#6B4E2E] rounded-xl flex items-center justify-center mb-6 shadow-md">
+              <Lock size={40} className="text-[#F5E6D3]" />
             </div>
 
             {/* Heading */}
-            <h1 className="text-3xl font-bold text-gray-800 mb-3">Verify your email</h1>
-            <p className="text-gray-600 text-lg">We have sent a 6-digit code to</p>
-            <p className='text-blue-400 font-medium'>{email}</p>
+            <h1 className="text-3xl font-merriweather font-bold text-[#2D2D2D] mb-3">Secure Your Message Lane</h1>
+            <p className="text-[#2D2D2D] text-lg font-merriweather">Enter the 6-digit code we sent to</p>
+            <p className='text-[#6B4E2E] font-merriweather'>{email}</p>
           </div>
 
           {/* OTP Form */}
           <form onSubmit={handleSubmit} className="space-y-6" >
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-4 ml-1 text-center">
-                Enter your 6 digit otp here
+              <label className="block text-sm font-merriweather text-[#2D2D2D] mb-4 ml-1 text-center">
+                Enter your 6 digit  key
               </label>
 
               {/* OTP Inputs */}
@@ -179,7 +179,7 @@ const VerifyOtp = () => {
                     onChange={(e) => handleInputChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
                     onPaste={index === 0 ? handlePaste : undefined} // Handle paste only on first input
-                    className='w-12 h-12 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-xl font-semibold text-gray-900 placeholder-gray-400'
+                    className='w-12 h-12 text-center border border-[#A67B5B] rounded-lg focus:ring-2 focus:ring-[#6B4E2E] focus:border-[#6B4E2E] outline-none text-xl font-merriweather text-[#2D2D2D] placeholder-[#2D2D2D]'
                   />
                 ))}
               </div>
@@ -187,8 +187,8 @@ const VerifyOtp = () => {
 
             {/* Error Message */}
             {error && (
-              <div className='bg-red-900 border border-red-700 rounded-lg p-3'>
-                <p className="text-red-300 text-sm text-center">{error}</p>
+              <div className='bg-[#C9B79C] border border-[#A67B5B] rounded-lg p-3'>
+                <p className="text-[#6B4E2E] text-sm text-center font-merriweather">{error}</p>
               </div>
             )}
 
@@ -196,16 +196,16 @@ const VerifyOtp = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-indigo-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#6B4E2E] text-[#F5E6D3] py-3 px-4 rounded-lg font-merriweather flex items-center justify-center gap-2 hover:bg-[#A67B5B] transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <div className='flex items-center justify-center gap-2'>
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  verifying...
+                  <Loader2 className="h-5 w-5 animate-spin text-[#F5E6D3]" />
+                  verifying  key...
                 </div>
               ) : (
                 <div className='flex items-center justify-center gap-2'>
-                  <span>verify</span>
+                  <span>Verify & Continue</span>
                   <ArrowRight className="h-5 w-5" />
                 </div>
               )}
@@ -214,16 +214,16 @@ const VerifyOtp = () => {
 
           {/* Resend OTP */}
           <div className="mt-6 text-center">
-            <p className="text-green-400 text-sm mb-4">Didn't receive the code?</p>
+            <p className="text-[#6B4E2E] text-sm mb-4 font-merriweather">Didn’t get your code?</p>
             {timer > 0 ? (
-              <p className="text-gray-600 text-sm">Resend available in {timer}s</p>
+              <p className="text-[#2D2D2D] text-sm font-merriweather">Resend available in {timer}s</p>
             ) : (
               <button
-                className="text-blue-400 hover:text-blue-300 font-medium text-sm disabled:opacity-50"
+                className="text-[#6B4E2E] hover:text-[#A67B5B] font-merriweather text-sm disabled:opacity-50"
                 disabled={resendLoading}
                 onClick={handleResendOtp}
               >
-                {resendLoading ? "Sending..." : "Resend Code"}
+                {resendLoading ? "Sending..." : "Resend  Key"}
               </button>
             )}
           </div>

@@ -1,4 +1,4 @@
-import tryCatch from "../config/TryCatch.js";
+import tryCatch from "../config/TryCatch.js"; 
 import { redisClient } from "../index.js";
 import { publishToQueue } from "../config/rabbitmq.js";
 import { User } from "../model/user.js";

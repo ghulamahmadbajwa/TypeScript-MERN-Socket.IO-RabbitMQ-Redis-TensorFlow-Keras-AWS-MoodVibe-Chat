@@ -7,7 +7,7 @@ dotenv.config();
 
 // 1️⃣ Start the RabbitMQ consumer for sending OTPs
 // This runs in the background and listens to the 'send_otp_queue' for new messages
-startSendOtpConsumer(); 
+startSendOtpConsumer();  
 
 // 2️⃣ Create an Express application
 const app = express();
